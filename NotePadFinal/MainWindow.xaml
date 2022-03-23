@@ -26,9 +26,10 @@
                     <MenuItem Header="Save as..." Click="Save_as_Click"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="Search">
-                    <MenuItem Header="Search"></MenuItem>
-                    <MenuItem Header="Replace"></MenuItem>
-                    <MenuItem Header="Replace All"></MenuItem>
+                    <MenuItem Header="Search" Click="Open_Search"></MenuItem>
+                    <MenuItem Header="Search All" Click="Open_SearchAll"></MenuItem>
+                    <MenuItem Header="Replace" Click="Open_Replace" ></MenuItem>
+                    <MenuItem Header="Replace All" Click="Open_ReplaceAll"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="Edit">
                     <MenuItem Header="Format"></MenuItem>
@@ -41,7 +42,8 @@
         </Menu>
         <TreeView Name="TreeView" Grid.Row="1" Grid.Column="0" ></TreeView>
         <GridSplitter Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch"/>
-        <TabControl Name="MyTabControl" Grid.Row="1" Grid.Column="2">
+        <TabControl Name="MyTabControl"
+                    Grid.Row="1" Grid.Column="2">
             <TabControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">

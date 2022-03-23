@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NotePadFinal
 {
     public class TabVM : INotifyPropertyChanged
     {
-      
-       
-            private string _Header;
+        private string _Header;
         public string Header
         {
             get => _Header;
@@ -33,7 +26,19 @@ namespace NotePadFinal
                 OnPropertyChanged();
             }
         }
-
+        private string _oldContent;
+        public string OldContent
+        {
+            get
+            {
+                return _oldContent;
+            }
+            set
+            {
+                _oldContent = value;
+                OnPropertyChanged();
+            }
+        }
         private string _Content;
         public string Content
         {
@@ -44,6 +49,14 @@ namespace NotePadFinal
             set
             {
                 _Content = value;
+                if(_Content!=OldContent)
+                {
+                    Color = "Red";
+                }
+                else
+                {
+                    Color = "Green";
+                }
                 OnPropertyChanged();
             }
         }
@@ -71,8 +84,22 @@ namespace NotePadFinal
             }
             set
             {
+                //if(Path!=null && Path!=string.Empty)
+                //{
+                //    if (Content != OldContent)
+                //    {
+                //        _Color = "Red";
+                //    }
+                //    else
+                //    {
+                //        _Color = "Green";
+                //    }
+                //    OnPropertyChanged();
+                //}
+
                 _Color = value;
                 OnPropertyChanged();
+                
             }
         }
 
