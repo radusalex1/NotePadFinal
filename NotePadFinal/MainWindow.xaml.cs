@@ -88,7 +88,7 @@ namespace NotePadFinal
 
                 currentTab = pos;
 
-              /*  if(Tabs[currentTab].Path!=null && Tabs[currentTab].Path != "" && Tabs[currentTab].Content != File.ReadAllText(Tabs[currentTab].Path))
+                /*if(Tabs[currentTab].Path!=null && Tabs[currentTab].Path != "" && Tabs[currentTab].Content != File.ReadAllText(Tabs[currentTab].Path))
                 {
                     Tabs[currentTab].Color = "Red";
                 }*/
@@ -237,6 +237,18 @@ namespace NotePadFinal
         private void Open_ReplaceAll(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Wrap_Text(object sender, RoutedEventArgs e)
+        {
+            if (Tabs[currentTab].Wrap == System.Windows.TextWrapping.Wrap)
+            {
+                Tabs[currentTab].Wrap = System.Windows.TextWrapping.NoWrap;
+            }
+            else
+            {
+                Tabs[currentTab].Wrap = System.Windows.TextWrapping.Wrap;
+            }
         }
     }
 }

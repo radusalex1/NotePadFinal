@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
 
 namespace NotePadFinal
 {
@@ -49,7 +50,7 @@ namespace NotePadFinal
             set
             {
                 _Content = value;
-                if(_Content!=OldContent)
+                if (_Content != OldContent)
                 {
                     Color = "Red";
                 }
@@ -84,22 +85,41 @@ namespace NotePadFinal
             }
             set
             {
-                //if(Path!=null && Path!=string.Empty)
-                //{
-                //    if (Content != OldContent)
-                //    {
-                //        _Color = "Red";
-                //    }
-                //    else
-                //    {
-                //        _Color = "Green";
-                //    }
-                //    OnPropertyChanged();
-                //}
-
                 _Color = value;
                 OnPropertyChanged();
-                
+            }
+        }
+
+
+        /// <summary>
+        /// Property for text wrapping.
+        /// </summary>
+        private TextWrapping _wrap;
+        public TextWrapping Wrap
+        {
+            get { return _wrap; }
+            set
+            {
+                _wrap = value;
+                OnPropertyChanged();
+                isWrapped = value == TextWrapping.Wrap ? true : false;
+            }
+        }
+
+        /// <summary>
+        /// Text property for text Wrapping when modifing window sizes.
+        /// Related to previous property.
+        /// </summary>
+        private bool _isWrapped;
+        public bool isWrapped
+        {
+            get
+            {
+                return _isWrapped;
+            }
+            set
+            {
+                OnPropertyChanged();
             }
         }
 

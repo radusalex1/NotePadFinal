@@ -33,7 +33,7 @@
                 </MenuItem>
                 <MenuItem Header="Edit">
                     <MenuItem Header="Format"></MenuItem>
-                    <MenuItem Header="Wrap"></MenuItem>
+                    <MenuItem Header="Wrap" Click="Wrap_Text"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="Help">
                     <MenuItem Header="About" Click="Open_About"></MenuItem>
@@ -75,8 +75,8 @@
                                 <TextBox Text="{Binding Content,UpdateSourceTrigger=PropertyChanged}"
                                          AcceptsReturn="True"
                                          AcceptsTab="True"
+                                         TextWrapping="{Binding Wrap,UpdateSourceTrigger=PropertyChanged}"
                                          ScrollViewer.VerticalScrollBarVisibility="Auto">
-
                                 </TextBox>
                             </ContentControl>
                         </ContentControl.Resources>
