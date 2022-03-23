@@ -1,0 +1,100 @@
+﻿<Window x:Class="NotePadFinal.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NotePadFinal"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3"/>
+            <ColumnDefinition Width="9*"/>
+        </Grid.ColumnDefinitions>
+        <Menu DataContext=""
+            Grid.Row="0" Grid.ColumnSpan="3">
+            <Menu.Items>
+                <MenuItem Header="File">
+                    <MenuItem Header="New" Click="New_Click"></MenuItem>
+                    <MenuItem Header="Open" Click="Open_Click"></MenuItem>
+                    <MenuItem Header="Save" Click="Save_Click"></MenuItem>
+                    <MenuItem Header="Save as..." Click="Save_as_Click"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Search">
+                    <MenuItem Header="Search"></MenuItem>
+                    <MenuItem Header="Replace"></MenuItem>
+                    <MenuItem Header="Replace All"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Edit">
+                    <MenuItem Header="Format"></MenuItem>
+                    <MenuItem Header="Wrap"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Help">
+                    <MenuItem Header="About" Click="Open_About"></MenuItem>
+                </MenuItem>
+            </Menu.Items>
+        </Menu>
+        <TreeView Name="TreeView" Grid.Row="1" Grid.Column="0" ></TreeView>
+        <GridSplitter Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch"/>
+        <TabControl Name="MyTabControl" Grid.Row="1" Grid.Column="2">
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            Text="{Binding Header, Mode=OneWay}"
+                            Foreground="{Binding Color,UpdateSourceTrigger=PropertyChanged}"/>
+                        <Button Click="OnTabCloseClick" 
+                                Width="20" Padding="0" Margin="8 0 0 0" Content="X">
+                            <Button.Style>
+                                <Style TargetType="Button" x:Name="CloseButtonStyle">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsPlaceholder}" Value="True">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </StackPanel>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+
+            <TabControl.ContentTemplate>
+                <DataTemplate>
+                    <ContentControl>
+                        <ContentControl.Resources>
+                            <ContentControl x:Key="TabContentTemplate">
+                                <TextBox Text="{Binding Content,UpdateSourceTrigger=PropertyChanged}"
+                                         AcceptsReturn="True"
+                                         AcceptsTab="True"
+                                         ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+                                </TextBox>
+                            </ContentControl>
+                        </ContentControl.Resources>
+                        <ContentControl.Style>
+                            <Style TargetType="ContentControl">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsPlaceholder}" Value="True">
+                                        <Setter Property="Content"
+                                        Value="{x:Null}"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsPlaceholder}" Value="False">
+                                        <Setter Property="Content"
+                                        Value="{StaticResource TabContentTemplate}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ContentControl.Style>
+                    </ContentControl>
+                </DataTemplate>
+            </TabControl.ContentTemplate>
+        </TabControl>
+    </Grid>
+</Window>

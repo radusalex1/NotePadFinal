@@ -1,0 +1,28 @@
+﻿<Window x:Class="NotePadFinal.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NotePadFinal"
+        mc:Ignorable="d"
+        Title="About" Height="500" Width="300">
+    <Grid>
+        <StackPanel VerticalAlignment="Center"
+                HorizontalAlignment="Center" Height="310" Margin="57,90,56.333,70.667">
+            <TextBlock FontSize="24" 
+                   HorizontalAlignment="Center"
+                   FontWeight="Bold">
+                Sample Pad
+            </TextBlock>
+            <TextBlock FontSize="18"
+                   FontWeight="SemiBold">
+                 About
+            </TextBlock>
+            <TextBlock TextWrapping="Wrap">
+                Alexandru Radu Serban<LineBreak/>
+                10LF301<LineBreak/>
+                radu.alexandru@student.unitbv.ro<LineBreak/>
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</Window>
