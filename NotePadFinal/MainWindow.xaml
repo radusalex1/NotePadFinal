@@ -33,10 +33,12 @@
                 </MenuItem>
                 <MenuItem Header="Edit">
                     <MenuItem Header="Format"></MenuItem>
-                    <MenuItem Header="Wrap" Click="Wrap_Text"></MenuItem>
+                    <MenuItem Header="Wrap" Click="Wrap_Text" IsCheckable="true"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="Help">
                     <MenuItem Header="About" Click="Open_About"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Exit" Click="Exit_Click">
                 </MenuItem>
             </Menu.Items>
         </Menu>

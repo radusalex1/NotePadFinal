@@ -85,15 +85,8 @@ namespace NotePadFinal
                     ConvertPlusToNewTab(tab);
                     AddNewPlusButton();
                 }
-
                 currentTab = pos;
-
-                /*if(Tabs[currentTab].Path!=null && Tabs[currentTab].Path != "" && Tabs[currentTab].Content != File.ReadAllText(Tabs[currentTab].Path))
-                {
-                    Tabs[currentTab].Color = "Red";
-                }*/
             }
-            
         }
 
         void ConvertPlusToNewTab(TabVM tab)
@@ -122,11 +115,22 @@ namespace NotePadFinal
             var tab = (sender as Button).DataContext as TabVM;
             if (Tabs.Count > 2)
             {
+                if (MessageBox.Show("Doriti sa salvati acest document?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                {
+                    //do no stuff
+                }
+                else
+                {
+                    Save_Click(sender, e);
+                }
+
                 var index = Tabs.IndexOf(tab);
                 if (index == Tabs.Count - 2)//last tab before [+]
                 {
                     MyTabControl.SelectedIndex--;
                 }
+
+                
                 Tabs.RemoveAt(index);
             }
         }
@@ -224,7 +228,17 @@ namespace NotePadFinal
 
         private void Open_Search(object sender, RoutedEventArgs e)
         {
-
+            Window search = new Window();
+            search.Width = 300;
+            search.Height = 300;
+            TextBlock textBox1 = new TextBlock();
+            textBox1.Text = "input word to search";
+            Panel panel =new StackPanel();
+            TextBox textBox = new TextBox();
+            panel.Children.Add(textBox1);
+            panel.Children.Add(textBox);
+            search.Content=panel;
+            search.Show();
         }
         private void Open_SearchAll(object sender, RoutedEventArgs e)
         {
@@ -249,6 +263,15 @@ namespace NotePadFinal
             {
                 Tabs[currentTab].Wrap = System.Windows.TextWrapping.Wrap;
             }
+        }
+
+        private void Exit_Click(object sender,RoutedEventArgs e)
+        {
+            foreach(var tab in Tabs)
+            {
+
+            }
+            System.Windows.Application.Current.Shutdown();
         }
     }
 }
