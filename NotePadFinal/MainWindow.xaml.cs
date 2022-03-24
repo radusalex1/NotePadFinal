@@ -231,14 +231,13 @@ namespace NotePadFinal
             Window search = new Window();
             search.Width = 300;
             search.Height = 300;
-            TextBlock textBox1 = new TextBlock();
-            textBox1.Text = "input word to search";
-            Panel panel =new StackPanel();
-            TextBox textBox = new TextBox();
-            panel.Children.Add(textBox1);
-            panel.Children.Add(textBox);
-            search.Content=panel;
-            search.Show();
+            search.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            StackPanel sp = new StackPanel();
+            TextBlock tb = new TextBlock();
+
+            tb.Text = "Search:";
+            
         }
         private void Open_SearchAll(object sender, RoutedEventArgs e)
         {

@@ -65,10 +65,7 @@ namespace NotePadFinal
         private string _Path;
         public string Path
         {
-            get
-            {
-                return _Path;
-            }
+            get => _Path;
             set
             {
                 _Path = value;
